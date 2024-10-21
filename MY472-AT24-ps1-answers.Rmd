@@ -1,0 +1,112 @@
+---
+title: "MY472: Practice Problem Set Solutions"
+author: "LSE Candidate Number: 202428736"
+date: "Autumn Term 2024"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+# this chunk contains code that sets global options for the entire .Rmd. 
+# we use include=FALSE to suppress it from the top of the document, but it will still appear in the appendix. 
+
+knitr::opts_chunk$set(echo = FALSE) # actually set the global chunk options. 
+# we set echo=FALSE to suppress code such that it by default does not appear throughout the document. 
+# note: this is different from .Rmd default
+```
+
+This document contains the necessary commands and layout to meet the formatting requirements for MY472. You should use this file as the basis for your own answers to the assigned exercises.
+
+**As you see fit, you may delete the instructions/examples that we include in this file. Please *do not* delete: (1) the header at the top between the dashed lines, (2) the first chunk of R code above, (3) the Evaluation section or (4) the Appendix section. Please also put your LSE candidate number in the "author" line at the top of this file. Do not include any personally identifying information in your Submission Repo, except for your LSE candidate number.**
+
+## Formatting requirements
+
+Unless stated otherwise, you will be evaluated on the contents of *one* knitted `.html` file that you provide to us. See instructions in the README of your Submission Repo. You should treat as professional "report" to the instructors. Part of our evaluation of your solutions will consider how professional, clear and organised your "report" is.
+
+Some specific guidelines:
+
+-   You must present all results in full sentences, as you would in a report or academic piece of writing.
+
+    -   If the exercise requires generating a table or figure, you should include at least one sentence introducing and explaining it. E.g. "The table below reports the counts of Wikipedia articles mentioning the LSE, by type of article."
+
+-   Unless stated otherwise, all code used to answer the exercises should be included as a code appendix at the end of the script. This formatting can be achieved by following the guidance in the answers `.Rmd` script included in this repo.
+
+-   All code should be annotated with comments, to help the marker understand what you have done.
+
+-   Your output should be reproducible. Any result/table/figure that cannot be traced back to your code will not be marked.
+
+## Example of in-line figures without code
+
+For those interested, we achieve the formatting requirements in two-steps: 1) in the `setup` chunk, we set `knitr::opts_chunk$set(echo = FALSE)` so that code is not included (echoed) by default in code chunks; 2) we add a specific chunk at the end of the file to collect and print *all* the code in the Rmarkdown file. Do not delete the final code chunk from the template!
+
+For example, below we use a code chunk to generate random data and include a scatter plot in-line. The code used to generate this chart is only reported at the end of the document.
+
+```{r plot_example}
+set.seed(89) # set a seed for R's psuedo-randomiser, for replicability.
+x <- rnorm(100) # randomly draw 100 obs from normal distribution, save as object
+y <- rnorm(100) 
+plot(x,y) # two-way scatterplot using R's default plotting
+```
+
+In specific instances, however, you may be directed to report your code in-line (or you may want to do this to illustrate a specific point). In these cases, we can override the default behaviour by adding the chunk option `echo = TRUE` to a specific R chunk. When `echo=TRUE`, your code is presented in-line with any output displayed afterwards. The same code will also be included in the appendix at the bottom of the document (which is fine).
+
+```{r echo_example, echo=TRUE}
+# {[language] [chunk_name], [chunk_options]}
+# here we use echo=TRUE to override our global options and make the chunk appear exactly here. 
+
+print("This code chunk is visible in this section.")
+```
+
+# Beginning of the formative assessment
+
+## Exercise 1
+
+Part of the development of this first exercise can be found in this repository: "<https://github.com/202428736/Exercise1-Repo.git>"
+
+The data I will be using to complete this exercise comes from one of the built-in R datasets, called "USArrests". It represents the statistics of USA arrests at a certain moment in time, including different type of crimes and the percentage of urban population.
+
+The information about the existence of such built-in data in R comes from "<http://www.sthda.com/english/wiki/r-built-in-data-sets#usarrests>".
+
+```{r echo_1, echo=TRUE}
+#First, we load basic packages.
+library(dplyr)
+library(tidyverse)
+
+#Secondly, we download the data.
+data("USArrests")
+
+#Now, we explore the data before working with it
+head(USArrests)
+nrow(USArrests) #It has 50 observations
+ncol(USArrests) #It has 4 variables
+
+```
+
+We can confirm that the data is tidy, as each cell contains the value that corresponds to one specific observation for one concrete variable.
+
+We are asked to perform a function on the data. In this case, we are going to create a new variable called "Total", which contains the addition of all crimes in the specific state, so we could rank (in the future) the states by their "dangerousness".
+
+```{r echo_2, echo=TRUE}
+USArrests <- USArrests %>% mutate(Total = Murder + Assault + Rape)
+ncol(USArrests) #we check if the variable has been correctly created
+head(USArrests)
+```
+
+## Evaluation
+
+*This section will be completed by the marker. Please do not edit it.*
+
+| Exercise | Mark | Comments |
+|:---------|:-----|:---------|
+| 1        | N/A  |          |
+| 2        | N/A  |          |
+| 3        | N/A  |          |
+| 4        | N/A  |          |
+
+Note: there are no marks awarded on this formative assignment.
+
+## Appendix: All code in this assignment
+
+```{r ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE}
+# this chunk generates the complete code appendix. 
+# eval=FALSE tells R not to run (``evaluate'') the code here (it was already run before).
+```
