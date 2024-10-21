@@ -486,6 +486,17 @@ ncol(USArrests) #we check if the variable has been correctly created</code></pre
 ## Arkansas      8.8     190       50 19.5 218.3
 ## California    9.0     276       91 40.6 325.6
 ## Colorado      7.9     204       78 38.7 250.6</code></pre>
+<p>Now we are going to perform a second modification in the data. We are
+going to create a variable called “mean_arrests” which represents the
+mean of total crimes per total urban population for each state.</p>
+<pre><code>## [1] 6</code></pre>
+<pre><code>##            Murder Assault UrbanPop Rape Total Mean_arrests
+## Alabama      13.2     236       58 21.2 270.4     4.662069
+## Alaska       10.0     263       48 44.5 317.5     6.614583
+## Arizona       8.1     294       80 31.0 333.1     4.163750
+## Arkansas      8.8     190       50 19.5 218.3     4.366000
+## California    9.0     276       91 40.6 325.6     3.578022
+## Colorado      7.9     204       78 38.7 250.6     3.212821</code></pre>
 </div>
 <div id="evaluation" class="section level2">
 <h2>Evaluation</h2>
@@ -555,6 +566,9 @@ ncol(USArrests) #It has 4 variables
 USArrests &lt;- USArrests %&gt;% mutate(Total = Murder + Assault + Rape)
 ncol(USArrests) #we check if the variable has been correctly created
 head(USArrests)
+Data_new &lt;- USArrests %&gt;% mutate(Mean_arrests = Total/UrbanPop) #we are asked to change the argument&#39;s name to data_new
+ncol(Data_new) #As before, we check if the variable has been correctly created
+head(Data_new)
 # this chunk generates the complete code appendix. 
 # eval=FALSE tells R not to run (``evaluate&#39;&#39;) the code here (it was already run before).</code></pre>
 </div>
