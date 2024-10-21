@@ -94,7 +94,7 @@ head(USArrests)
 Now we are going to perform a second modification in the data. We are going to create a variable called "mean_arrests" which represents the mean of total crimes per total urban population for each state. 
 
 ```{r}
-USArrests <- USArrests %>% mutate(Mean_arrests = Total/UrbanPop)
+Data_new <- USArrests %>% mutate(Mean_arrests = Total/UrbanPop) #we are asked to change the argument's name to data_new
 ncol(USArrests) #As before, we check if the variable has been correctly created
 head(USArrests)
 ```
