@@ -95,8 +95,8 @@ Now we are going to perform a second modification in the data. We are going to c
 
 ```{r}
 Data_new <- USArrests %>% mutate(Mean_arrests = Total/UrbanPop) #we are asked to change the argument's name to data_new
-ncol(USArrests) #As before, we check if the variable has been correctly created
-head(USArrests)
+ncol(Data_new) #As before, we check if the variable has been correctly created
+head(Data_new)
 ```
 
 
