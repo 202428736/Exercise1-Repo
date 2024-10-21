@@ -91,6 +91,15 @@ ncol(USArrests) #we check if the variable has been correctly created
 head(USArrests)
 ```
 
+Now we are going to perform a second modification in the data. We are going to create a variable called "mean_arrests" which represents the mean of total crimes per total urban population for each state. 
+
+```{r}
+USArrests <- USArrests %>% mutate(Mean_arrests = Total/UrbanPop)
+ncol(USArrests) #As before, we check if the variable has been correctly created
+head(USArrests)
+```
+
+
 ## Evaluation
 
 *This section will be completed by the marker. Please do not edit it.*
